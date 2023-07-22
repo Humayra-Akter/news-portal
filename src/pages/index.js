@@ -28,6 +28,20 @@ HomePage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
+/**export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
+  const res = await fetch("http://localhost:5000/news"); // --> json server
+  const data = await res.json();
+  // console.log(data);
+  return {
+    props: {
+      allNews: data,
+      // allNews: data.data, // when using internal API connected with mongoDB
+    },
+    revalidate: 10,
+  };
+}; */
+
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:5000/news");
 
